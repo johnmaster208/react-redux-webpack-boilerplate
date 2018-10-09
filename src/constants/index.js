@@ -5,9 +5,10 @@ CONSTANTS, AND OTHER APPLICATION-WIDE VARIABLES
 https://modernweb.com/javascript-configuration-object-pattern/ 
 */
 
-export const ACTIONS = keyMirror({
+export const ACTION = keyMirror({
     //DEFINE ACTIONS HERE...
-    DUMMY: null
+    DUMMY: null,
+    FETCH: null,
 })
 
 export const STATUS = keyMirror({

@@ -1,44 +1,44 @@
+import {ACTION, STATUS} from '../constants'
+
+
 const defaultState = {
     status: {},
-    alert: {},
-    error: {}
+    alert: {}
 }
 
 const StatusReducer = (state=defaultState.status, action) => {
-    switch(action.status) {
-        default: {
-            return state
-        }
+    if(action.status) {
+        let newstate = {};
+        if(action.code === 500) {
+            newstate[STATUS.ABORT] = true;
+        } else {
+            newstate = {
+                [action.type]: action.status
+            }
+        }        
+        return {...state, ...newstate}
     }
+    return state;
 }
 
 const AlertReducer = (state=defaultState.alert, action) => {
-    switch(action.alert) {
-        default: {
-            return state
+    if(action.alert) {
+        let newstate = {}
+        newstate[action.alert] = {
+            show: action.status === STATUS.WARNING || action.status === STATUS.ERROR || action.status === STATUS.SUCCESS ? true : false,
+            status: action.status,
+            message: action.message
         }
+        return {...state, ...newstate}
     }
-}
-
-const ErrorReducer = (state=defaultState.error, action) => {
-    switch(action.error) {
-        default: {
-            return {...state, ...action.error}
-        }
-    }
+    return state;
 }
 
 const AppReducer = (state=defaultState, action) => {
-    if(action.type) {
-        let newState = {
-            ...state,
-            status: StatusReducer,
-            alert: AlertReducer,
-            error: ErrorReducer
-        }
-        return newState
+    return {
+        status: StatusReducer(state.status, action),
+        alert: AlertReducer(state.alert, action)
     }
-    return state
 }
 
 export default AppReducer
