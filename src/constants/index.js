@@ -21,6 +21,16 @@ export const STATUS = keyMirror({
     ERROR: null
 })
 
+export const MODAL = keyMirror({
+    RESERVE_APPOINTMENT: null,
+    MODIFY_APPOINTMENT: null
+})
+
+export const FORM = keyMirror({
+    RESERVE: null,
+    MODIFY: null
+})
+
 export const PATH = {
     home: "/home"
 }

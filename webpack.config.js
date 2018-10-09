@@ -20,6 +20,9 @@ module.exports = {
         publicPath: '/',
         pathinfo: true
     },
+    node: {
+        fs: 'empty'
+    },
     mode: 'development',
     devtool: setDevTool(),
     module: {
