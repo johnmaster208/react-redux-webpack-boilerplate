@@ -16,8 +16,8 @@ class MainComponent extends Component {
   }
 
   componentDidMount() {
-    // store.dispatch({type: ACTIONS.DUMMY, data: { text: 'a dummy action'}})
-    // store.dispatch({type: ACTIONS.DUMMY, error: "Error was thrown!"})
+    store.dispatch({type: ACTION.DUMMY, data: { text: 'a dummy action'}})
+    store.dispatch({type: ACTION.DUMMY, error: "Error was thrown!"})
     // this.actions.fetch("http://country.io/names.json")
     this.props.fetch("http://country.io/names.json")
 

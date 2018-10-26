@@ -1,16 +1,13 @@
-
-import React, { Component } from 'react'
-import {Provider} from 'react-redux'
-import store from '../store/configureStore'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import store from '../store/configureStore'
+import MainComponent from '../components/MainComponent'
 import '../styles/styles.less'
-import {MainContainer} from '../containers'
 
 ReactDOM.render(
     <Provider store={store}>
         <MainComponent />
     </Provider>, 
-    document.querySelector('#app')
+    document.querySelector('#root')
 )
